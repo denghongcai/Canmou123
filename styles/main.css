@@ -1,0 +1,481 @@
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre,
+form, fieldset, input, textarea, p, blockquote, th, td {
+    font-family: "微软雅黑";
+    word-break: break-all;
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+ul, li, a {
+    list-style: none;
+    text-decoration: none;
+}
+
+body {
+    background-color: #eee;
+}
+
+#main {
+    margin-top: 50px;
+}
+
+#wrapper {
+    width: 1100px;
+    margin: auto;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+#header {
+    width: 1100px;
+    height: 50px;
+    position: relative;
+    margin: auto;
+}
+
+#header-holder {
+    background-color: #3399ff;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+}
+
+#city {
+    position: absolute;
+    top: 20px;
+    left: 140px;
+    padding: 2px 4px 2px 4px;
+    font-size: 14px;
+    color: #fff;
+}
+
+#login {
+    position: absolute;
+    top: 20px;
+    left: 980px;
+    padding: 2px 4px 2px 4px;
+    font-size: 14px;
+    color: #fff;
+    display: block;
+}
+
+#register {
+    position: absolute;
+    top: 20px;
+    left: 1030px;
+    padding: 2px 4px 2px 4px;
+    font-size: 14px;
+    color: #fff;
+    display: block;
+}
+
+.none {
+    display: none;
+}
+
+#header img {
+    margin-left: 10px;
+}
+
+.block {
+    display: block;
+}
+
+#nav {
+    background-color: #3399ff;
+    width: 152px;
+    margin-left: 14px;
+    font-weight: bold;
+    float: left;
+    font-size: 14px;
+}
+
+#nav a {
+    display: block;
+    text-align: center;
+    padding-bottom: 4px;
+    padding-top: 4px;
+    color: white;
+}
+
+#nav a:hover {
+    background-color:#64b4d4;
+}
+
+#nav-inline {
+    background-color: #3399ff;
+    width: 1100px;
+    font-weight: bold;
+    height: 30px;
+    padding-left: 17px;
+}
+
+#nav-inline li {
+    float: left;
+}
+
+#nav-inline a {
+    display: block;
+    text-align: center;
+    padding-bottom: 4px;
+    padding-top: 4px;
+    color: white;
+    width: 152px;
+}
+
+#nav-inline a:hover {
+    background-color:#64b4d4;
+}
+
+#chosen {
+    text-align: center;
+    padding-bottom: 4px;
+    padding-top: 4px;
+    color: #3399ff;
+    background-color: white;
+}
+
+#class {
+    font-size: 12px;
+    margin: 5px 0px 0px 280px;
+    position: relative;
+
+}
+
+.category {
+    border-bottom: 1px #ddd solid;
+    padding-bottom: 5px;
+    width: 720px;
+}
+
+#class a {
+    color: #777;
+    margin-left: 10px;
+    padding: 2px 4px 2px 4px;
+}
+
+#class b {
+    color: #ff9226;
+}
+
+#class p {
+    position: absolute;
+    top: 1px;
+    left: -50px;
+}
+
+.district {
+    border-bottom: 1px #ddd solid;
+    padding-bottom: 5px;
+    width: 720px;
+    margin-top: 15px;
+}
+
+.number {
+    border-bottom: 1px #ddd solid;
+    padding-bottom: 5px;
+    width: 720px;
+    margin-top: 15px;
+}
+
+.value {
+    border-bottom: 1px #ddd solid;
+    padding-bottom: 5px;
+    width: 720px;
+    margin-top: 15px;
+}
+
+#class a:hover {
+    color: #3399ff;
+}
+
+#foot {
+    margin-top: 50px;
+    clear: both;
+}
+
+#foot img {
+    float: right;
+    display: block;
+
+}
+
+#foot div {
+    overflow: auto;
+    background: url(../img/foot.jpg) top no-repeat;
+    width: 1100px;
+    padding: 4px 0px 4px 0px;
+    font-size: 12px;
+    text-align: center;
+    color: #eee;
+    clear: both;
+}
+
+.current {
+    background-color: #3399ff;
+    color: white;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+}
+
+#header form {
+    position: absolute;
+    top: 10px;
+    left: 400px;
+}
+
+#search {
+    padding: 0px 80px 0px 5px;
+    width: 215px;
+    font-size: 14px;
+    height: 25px;
+    border: 1px solid #ff9226;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    float: left;
+}
+
+.autocomplete-w1 {
+    background: url(../img/shadow.png) no-repeat bottom right;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    margin: 8px 0 0 6px; /* IE6 fix: */
+    _background: none;
+    _margin: 0;
+}
+
+.autocomplete {
+    border: 1px solid #999;
+    background: #FFF;
+    cursor: default;
+    text-align: left;
+    max-height: 350px;
+    overflow: auto;
+    margin: -6px 6px 6px -6px; /* IE6 specific: */
+    _height: 350px;
+    _margin: 0;
+    _overflow-x: hidden;
+}
+
+.autocomplete .selected {
+    background: #F0F0F0;
+}
+
+.autocomplete div {
+    padding: 2px 5px;
+    white-space: nowrap;
+    font-family: "微软雅黑", "verdana", "ms song", "Arial", "Helvetica", "sans-serif";
+    font-size: 14px;
+}
+
+.autocomplete strong {
+    font-weight: normal;
+    color: #3399FF;
+}
+
+.submit {
+    padding: 4px 8px;
+    background-color: #FFFFFF;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    color: #3399FF;
+    font-size: 14px;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+    float: left;
+    margin: 1px 0px 0px -80px;
+    height: 20px;
+
+}
+
+.submit:hover {
+    background: none;
+    background-color: #FFFFFF;
+    color: #ff9226;
+}
+
+.submit:active {
+    top: 1px;
+    position: relative;
+}
+
+#foot span {
+    font-family: Tahoma, Arial, "宋体", Helvetica, sans-serif;
+}
+
+#lean_overlay {
+    position: fixed;
+    z-index: 100;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    background: #000;
+    display: none;
+}
+
+#loginform {
+    width: 600px;
+    padding: 15px 0px;
+    background: #fff;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    height: 300px;
+
+}
+
+#loginform h3 {
+    background: url(../img/logo.jpg) no-repeat left top;
+    background-color: #3399ff;
+    height: 50px;
+    overflow: auto;
+    color: white;
+}
+
+#loginform h3 span {
+    margin: 10px 0px 0px 500px;
+    display: block;
+}
+
+#username, #password {
+    width: 250px;
+    margin-top: 30px;
+    margin-left: 20px;
+    position: relative;
+}
+
+#username label, #password label {
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    z-index: 100;
+    color: #999999;
+
+}
+
+#username input, #password input {
+    width: 180px;
+    height: 30px;
+    padding-left: 80px;
+    border: 2px solid #3399ff;
+}
+
+#close {
+    padding: 3px 10px;
+    border: 1px solid #C7C7C7;
+    background-color: #FF0000;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    color: #FCF7F7;
+    font-size: 14px;
+    font-family: Arial;
+    text-decoration: none;
+    font-weight: bold;
+    -webkit-transition: 0.2s;
+    -moz-transition: 0.2s;
+    -o-transition: 0.2s;
+    cursor: pointer;
+}
+
+#close:hover {
+    background: none;
+    background-color: #FF0000;
+    -webkit-box-shadow: 0px 0px 5px 0px #AAAAAA;
+    -moz-box-shadow: 0px 0px 5px 0px #AAAAAA;
+    border: 1px solid #ffffff;
+    color: #fff;
+}
+
+#close:active {
+    top: 1px;
+    position: relative;
+}
+
+.center {
+    margin-left: 90px;
+    margin-top: 30px;
+}
+
+#loginbtn {
+    padding: 3px 10px;
+    border: 1px solid #C7C7C7;
+    background-color: #eee;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    color: #3399ff;
+    font-size: 14px;
+    text-decoration: none;
+    font-weight: bold;
+    -webkit-transition: 0.2s;
+    -moz-transition: 0.2s;
+    -o-transition: 0.2s;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+#loginbtn:hover {
+    background: none;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 5px 0px #AAAAAA;
+    -webkit-box-shadow: 0px 0px 5px 0px #AAAAAA;
+    -moz-box-shadow: 0px 0px 5px 0px #AAAAAA;
+    border: 1px solid #ffffff;
+    color: #3399ff;
+}
+
+#loginbtn:active {
+    top: 1px;
+    position: relative;
+}
+
+.login-left {
+    float: left;
+    border-right: 1px #ddd solid;
+    width: 300px;
+    margin-top: 20px;
+}
+
+.login-right {
+    float: left;
+}
+
+#gotop {
+    display: block;
+    width: 60px;
+    height: 60px;
+    position: fixed;
+    bottom: 50px;
+    right: 40px;
+    border-radius: 10px 10px 10px 10px;
+    text-decoration: none;
+    display: none;
+    background-color: #999999;
+}
+
+#gotop span {
+    display: block;
+    width: 60px;
+    color: #dddddd;
+}
+
+#gotop span:hover {
+    color: #cccccc;
+}
+
+#gotop span {
+    font-size: 40px;
+    text-align: center;
+    margin-top: 4px;
+}
