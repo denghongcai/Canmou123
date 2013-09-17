@@ -30,6 +30,8 @@ class User extends CI_Controller
                 $err = array();
                 if (mb_strlen($data['usrname']) < 3)
                     $err['usrname'] = 1;
+                if (mb_strlen($data['nickname']) < 3)
+                    $err['nickname'] = 1;
                 if (!preg_match('/^[0-9a-zA-Z_\x{4e00}-\x{9fa5}]+$/u', $data['usrname']))
                     $err['usrname'] = 1;
                 if (mb_strlen($data['passwd']) >= 20 || mb_strlen($data['passwd']) < 6)
@@ -48,7 +50,9 @@ class User extends CI_Controller
                     $this->user_model->user_register($data);
                     $this->session->set_userdata(array(
                         'is_login' => 1,
-                        'usrname' => $data['usrname']
+                        'usrname' => $data['usrname'],
+                        'uid'=>$data['uid'],
+                        'nickname' => $data['nickname']
                     ));
                     $this->output
                         ->set_content_type('json')
@@ -80,7 +84,8 @@ class User extends CI_Controller
                 $this->session->set_userdata(array(
                     'is_login' => 1,
                     'usrname' => $data['usrname'],
-                    'uid'=>$data['uid']
+                    'uid'=>$data['uid'],
+                    'nickname' => $data['nickname']
                 ));
                 $this->output
                     ->set_content_type('json')

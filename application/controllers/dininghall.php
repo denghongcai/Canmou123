@@ -19,9 +19,9 @@ class Dininghall extends CI_Controller
         $this->load->model('cuisine_model');
     }
 
-    public function index()
+    public function index($page = null)
     {
-        $data['dininghallrc'] = $this->dininghall_model->get_dininghallrc();
+        $data['dininghallrc'] = $this->dininghall_model->get_dininghallrc(NULL, $page);
         $data['dininghallrc'] = array_map(array($this, 'addComment'), $data['dininghallrc']);
         $header['is_login'] = $this->session->userdata('is_login');
         $header['title'] = '餐谋网';
@@ -36,9 +36,17 @@ class Dininghall extends CI_Controller
         $this->load->view('footer');
     }
 
-    public function dhlist($type=null, $area=null, $eater=null, $price=null, $rate=null, $date=null, $order=null, $page=null)
+    public function autocomplete($type = null)
     {
-        $data['dhlist'] = $this->dininghall_model->get_dininghall($type, $area, $price, $eater, $rate, $date, $order, $page);
+        $data = $this->input->get(NULL, TRUE);
+        $data = $data['query'];
+        $data = $this->dininghall_model->search_dh($data);
+        echo json_encode($data);
+    }
+
+    public function dhlist($type=null, $area=null, $eater=null, $price=null, $rate=null, $order=null, $page=null)
+    {
+        $data['dhlist'] = $this->dininghall_model->get_dininghall($type, $area, $price, $eater, $rate, $order, $page);
         $data['dhlist'] = array_map(array($this, 'imagefilter'), $data['dhlist']);
         $data['dhlist'] = array_map(array($this, 'addComment'), $data['dhlist']);
         $header['is_login'] = $this->session->userdata('is_login');
@@ -51,6 +59,24 @@ class Dininghall extends CI_Controller
         $this->load->view('header', $header);
         $this->load->view('category', $category);
         $this->load->view('dhlist_view', $data);
+        $this->load->view('footer');
+    }
+
+    public function dhhotrate()
+    {
+        $data['dhlist'] = $this->dininghall_model->get_dh_hot();
+        $data['dhlist'] = array_map(array($this, 'imagefilter'), $data['dhlist']);
+        $data['dhhot'] = array_map(array($this, 'addComment'), $data['dhlist']);
+        $header['is_login'] = $this->session->userdata('is_login');
+        $header['title'] = '参谋热评-餐谋网';
+        $header['type'] = NULL;
+        $category['current']['type'] = 0;
+        $category['current']['area'] = 0;
+        $category['current']['eater'] = 0;
+        $category['current']['price'] = 0;
+        $this->load->view('header', $header);
+        $this->load->view('category', $category);
+        $this->load->view('hotrate', $data);
         $this->load->view('footer');
     }
 

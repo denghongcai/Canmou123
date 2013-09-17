@@ -23,7 +23,9 @@ class Comment extends CI_Controller
         $uid = $this->session->userdata('uid');
         $total = floor(($data['tastestar'] * 5 + $data['serstar'] * 3 + $data['envstar'] * 2)/10);
         $data['rate'] = $total;
-        if($this->comment_model->add_dh_comment($dhid, $uid, $data))
+        $data['content'] = htmlspecialchars_decode($data['content']);
+        $data['content'] = preg_replace("/<(.*?)>/","", $data['content']);
+        if($this->comment_model->add_dh_comment($dhid, $uid, $data) && mb_strlen($data['content']))
             echo json_encode(array('err'=> 0));
         else
             echo json_encode(array('err'=> 1));

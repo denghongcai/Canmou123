@@ -23,6 +23,7 @@
             <a href="#loginform" class="flatbtn" id="login"><b>登录</b></a>
             <a href="<?php echo base_url('user/register')?>" class="flatbtn" id="register"><b>注册</b></a>
         <?php else: ?>
+            <<a href="#" class="flatbtn" id="login"><b><?=$this->session->userdata('nickname')?></b></a>
             <a href="<?=base_url('user/logout')?>" class="flatbtn" id="login"><b>退出</b></a>
         <?php endif ?>
 
@@ -41,7 +42,7 @@
                 <li><a href="#"><strong>吃点啥</strong></a></li>
                 <li><a href="#"><strong>尝尝鲜</strong></a></li>
                 <li><a href="#"><strong>最新优惠</strong></a></li>
-                <li><a href="#"><strong>餐谋热评榜</strong></a></li>
+                <li><a href="<?=base_url('dininghall/dhhotrate')?>"><strong>餐谋热评榜</strong></a></li>
                 <li><a href="#"><strong>参谋推荐</strong></a></li>
                 <li><a href="#"><strong>我的优惠</strong></a></li>
             </ul>

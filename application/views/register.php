@@ -9,11 +9,15 @@
         <span class='inline-tips'></span>
     </div>
     <div class="regis">
-        <label for="password1">密码：</label><input type="password" name="passwd" id="password1"/>
+        <label for="nickname">昵称：</label><input type="text" name="nickname" id="nickname" autocomplete="off"/>
         <span class='inline-tips'></span>
     </div>
     <div class="regis">
-        <label for="repassword">确认密码：</label><input type="password" name="repasswd" id="repassword"/>
+        <label for="password1">密码：</label><input type="password" name="passwd" id="password1" autocomplete="off"/>
+        <span class='inline-tips'></span>
+    </div>
+    <div class="regis">
+        <label for="repassword">确认密码：</label><input type="password" name="repasswd" id="repassword" autocomplete="off"/>
         <span class='inline-tips'></span>
     </div>
     <div class="regis">

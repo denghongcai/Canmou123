@@ -16,12 +16,36 @@ class Dininghall_model extends CI_Model
         $this->load->database();
     }
 
-    public function get_dininghallrc($type = null)
+    public function search_dh($data, $type = null)
+    {
+        if($type){
+
+        }
+        else{
+            $this->db->like('name', $data);
+            $query = $this->db->get('dininghall', $this->limit);
+            $result = $query->result_array();
+            $suggests = array();
+            $dhid = array();
+            foreach($result as $item){
+                array_push($suggests, $item['name']);
+                array_push($dhid, $item['dhid']);
+            }
+            $return = array(
+                'query'=>$data,
+                'suggestions'=>$suggests,
+                'data'=>$dhid
+            );
+            return $return;
+        }
+    }
+
+    public function get_dininghallrc($type = null, $page = 0)
     {
         if(!$type){
             $this->db->order_by('rand()');
             $this->db->where('recommend', 0);
-            $query = $this->db->get('dininghall', $this->limit);
+            $query = $this->db->get('dininghall', $this->limit, $page*$this->limit);
             return $query->result_array();
         }
         else{
@@ -29,13 +53,22 @@ class Dininghall_model extends CI_Model
         }
     }
 
-    public function get_dininghall($type, $area, $price, $eater, $rate, $date, $order, $page)
+    public function get_dininghall($type, $area, $price, $eater, $rate, $order, $page)
     {
         $where = array('area' => $area, 'price' => $price,
-            'eater' => $eater, 'rate' => $rate, 'date' => $date);
+            'eater' => $eater, 'rate' => $rate);
         $where = array_filter($where, array($this, "illegalfilter"));
         if (count($where) != 0)
-            $this->db->where($where);
+            if($type != null && $type != 0){
+                $where = $this->get_where($where);
+                $this->db->where("concat(',',type,',') LIKE '%,".$type.",%'".$where);
+            }
+            else
+                $this->db->where($where);
+        else
+            if($type != null && $type != 0){
+                $this->db->where("concat(',',type,',') LIKE '%,".$type.",%'");
+            }
         if ($this->illegalfilter($order)) {
             switch ($order) {
                 case 1:
@@ -57,12 +90,16 @@ class Dininghall_model extends CI_Model
             $order = 'rand()';
         if($page == null)
             $page = 0;
-        if($type != null){
-            $this->db->like('type', $type);
-        }
         $this->db->order_by($order);
         $query = $this->db->get('dininghall',$this->limit, $page*$this->limit);
 
+        return $query->result_array();
+    }
+
+    public function get_dh_hot()
+    {
+        $this->db->order_by('rate desc');
+        $query = $this->db->get('dininghall', 3);
         return $query->result_array();
     }
 
@@ -111,5 +148,34 @@ class Dininghall_model extends CI_Model
             return false;
         else
             return true;
+    }
+
+    private function get_where($arg = null) {
+        $where = '';
+        foreach ((array)$arg as $key => $val) {
+            if(is_int($key)) {
+                $where .= " $val ";
+            }else {
+                if(is_string($val)) {
+                    if($val === null) {
+                        $where .= " and $key is null ";
+                    }else {
+                        $where .= " and $key = '$val' ";
+                    }
+                }elseif(is_array($val)) {
+                    foreach ($val as $v) {
+                        if(is_string($v)) {
+                            $in .= $in ? ",'$v'" : "'$v'";
+                        }else {
+                            $in .= $in ? ",$v" : "$v";
+                        }
+                    }
+                    $where .= " and $key in ($in)";
+                }else {
+                    $where .= " and $key = $val ";
+                }
+            }
+        }
+        return $where;
     }
 }

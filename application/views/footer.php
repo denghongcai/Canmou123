@@ -89,6 +89,7 @@
         $('#registerform').submit(function (e) {
             e.preventDefault();
             var username = $("#username1").val();
+            var nickname = $("#nickname").val();
             var password = $("#password1").val();
             var repassword = $('#repassword').val();
             var mail = $('#mailbox').val();
@@ -97,7 +98,7 @@
                 type: "POST",
                 url: "./register/post",
                 dataType: "json",
-                data: {"usrname": username, "passwd": password, 'repasswd': repassword, "mail": mail},
+                data: {"usrname": username, "nickname": nickname, "passwd": password, 'repasswd': repassword, "mail": mail},
                 beforeSend: function () {
                     ;
                 },
