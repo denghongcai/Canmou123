@@ -20,7 +20,7 @@ Class Administrator extends CI_Controller
 
     public function index()
     {
-        $data['dhdata'] = $this->dininghall_model->get_dininghall(null, null, null, null, null, null, 4, null);
+        $data['dhdata'] = $this->dininghall_model->get_dininghall(null, null, null, null, null, 4, null);
         $this->load->view('admin/header');
         $this->load->view('admin/index', $data);
         $this->load->view('admin/footer');
@@ -28,7 +28,7 @@ Class Administrator extends CI_Controller
 
     public function dhlist($page = null)
     {
-        $data['dhdata'] = $this->dininghall_model->get_dininghall(null, null, null, null, null, null, 4, $page);
+        $data['dhdata'] = $this->dininghall_model->get_dininghall(null, null, null, null, null, 4, $page);
         $data['pagenum'] = $this->dininghall_model->get_dh_count();
         $this->load->view('admin/header');
         $this->load->view('admin/dh', $data);
@@ -54,6 +54,8 @@ Class Administrator extends CI_Controller
             if ((int)$dhid != 0) {
                 $data['dhdata'] = $this->dininghall_model->get_dh_detail($dhid);
                 $data['dhid'] = $data['dhdata']['dhid'];
+                $data['dhimg'] = $this->dininghall_model->get_dh_img($dhid);
+                $data['cuisineimg'] = $this->cuisine_model->getCuisine($dhid);
             } else {
                 $data['error'] = urldecode($dhid);
             }
@@ -104,6 +106,30 @@ Class Administrator extends CI_Controller
     {
         if ($this->dininghall_model->del_dininghall($dhid))
             redirect('administrator/dhlist');
+    }
+
+    public function deldhimg($imageid)
+    {
+        if($this->dininghall_model->del_dh_img($imageid))
+            echo json_encode(array(
+                'err'=>0
+            ));
+        else
+            echo json_encode(array(
+                'err'=>1
+            ));
+    }
+
+    public function delcuisine($id)
+    {
+        if($this->cuisine_model->delCuisine($id))
+            echo json_encode(array(
+                'err'=>0
+            ));
+        else
+            echo json_encode(array(
+                'err'=>1
+            ));
     }
 
     public function modifycuisine($dhid)

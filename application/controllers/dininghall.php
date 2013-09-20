@@ -8,6 +8,7 @@
  */
 class Dininghall extends CI_Controller
 {
+    private $num = 2;
 
     public function __construct()
     {
@@ -91,6 +92,7 @@ class Dininghall extends CI_Controller
                 'dhid'=>$dhid
             )
         );
+        $this->num = 5;
         $result['comment'] = array_map(array($this, 'addComment'), $data);
         $header['title'] = $result['name'].'——餐谋网';
         $header['is_login'] = $this->session->userdata('is_login');
@@ -109,7 +111,7 @@ class Dininghall extends CI_Controller
 
     private function addComment($v){
         $v['comment'] = array();
-        $comment = $this->comment_model->get_dh_comment($v['dhid']);
+        $comment = $this->comment_model->get_dh_comment($v['dhid'], 0, $this->num);
         foreach($comment as $item){
             $userinfo = $this->user_model->user_get_info($item['uid']);
             $userinfo['image'] = base_url($userinfo['image']);

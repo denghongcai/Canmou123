@@ -27,7 +27,7 @@ class Comment_model extends CI_Model
     public function add_dh_comment($dhid, $uid, $data)
     {
         $data['dhid'] = $dhid;
-        $dhid['uid'] = $uid;
+        $data['uid'] = $uid;
         $this->db->insert('comment', $data);
         if($this->db->affected_rows())
             return TRUE;

@@ -40,7 +40,7 @@
 <script type="text/javascript" src="<?php echo base_url('js/jquery.autocomplete-min.js') ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('js/jquery.leanModal.min.js') ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('js/jquery.form.min.js') ?>"></script>
-<script type="text/javascript" src="<?php echo base_url('js/jquery.lightbox-0.5.pack.js') ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('js/jquery.lightbox-0.4.js')>"</script>
 <script type="text/javascript" src="<?php echo base_url('js/main.js') ?>"></script>
 <script type="text/javascript" src="<?php echo base_url('js/img.js') ?>"></script>
 <?php if (strpos(uri_string(), 'dhdetail')): ?>
@@ -82,12 +82,8 @@
                 }, 'json');
             }
         });
-        $('a.lightbox').lightBox({
-            imageLoading: '<?=base_url('img/loading.gif')?>',
-            imageBtnClose: '<?=base_url('img/close.gif')?>',
-            imageBtnPrev: '<?=base_url('img/prev.gif')?>',
-            imageBtnNext: '<?=base_url('img/next.gif')?>'
-        });
+
+	$('a.lightbox').lightBox();
     });
 </script>
 <?php endif ?>

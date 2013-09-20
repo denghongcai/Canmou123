@@ -47,7 +47,8 @@ class User extends CI_Controller
                         ->set_output(json_encode($err));
                 } else {
                     unset($data['repasswd']);
-                    $this->user_model->user_register($data);
+                    $data['uid'] = $this->user_model->user_register($data);
+                    $data['uid'] = $data['uid']['uid'];
                     $this->session->set_userdata(array(
                         'is_login' => 1,
                         'usrname' => $data['usrname'],

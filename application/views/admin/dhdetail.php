@@ -108,6 +108,15 @@
                             </form>
                         </div>
                         <div class="tab-pane fade" id="other">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <?php foreach($dhimg as $item):?>
+                                            <img class="dhimg" id="<?=$item['imgid']?>" src="<?=base_url($item['path'])?>" alt=""/>
+                                        <?php endforeach ?>
+                                    </tr>
+                                </tbody>
+                            </table>
                             <form id="tab2">
                                 <div id="image-upload">
 
@@ -126,8 +135,29 @@
 
                             <div id="queue"></div>
                             <input id="cuisine_upload" name="file_upload" type="file">
-
-                            <form id="tab3" action="<?= base_url("administrator/modifycuisine/$dhid") ?>" method="post" accept-charset="utf-8">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>菜品名字</th>
+                                        <th>菜品图片</th>
+                                        <th>菜品介绍</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <?php foreach($cuisineimg as $item):?>
+                                            <th><?=$item['id']?></th>
+                                            <th><?=$item['name']?></th>
+                                            <th><?=base_url($item['image'])?></th>
+                                            <th><?=$item['intro']?></th>
+                                            <th><a href="<?=base_url('administrator/delcuisine/'.$item['id'])?>"><i class="icon-pencil"></i></a></th>
+                                        <?php endforeach ?>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <form id="tab3" action="<?= base_url("administrator/modifycuisine/$dhid")?>" method="post" accept-charset="utf-8">
                                 <label>名称</label>
                                 <input type="text" name="name" class="input-xlarge">
                                 <label>介绍</label>
@@ -191,6 +221,18 @@
                         'onUploadSuccess': function (file, data, response) {
                             $('#cuisine-upload').append('<img src="<?=base_url()?>' + data + '" width="460" height="280">');
                             $('#cuisine-img').val(data);
+                        }
+                    });
+                    $('.dhimg').click(function(){
+                        if(window.confirm("确定要删除?")){
+                            self = this;
+                            $.get("<?=base_url('administrator/deldhimg/')?>" + "/" + this.id, function(req, status, xhr){
+                                if(req.err == 0){
+                                    $(self).fadeOut();
+                                }
+                                else
+                                    alert("error");
+                            }, 'json');
                         }
                     });
                 });

@@ -9,14 +9,14 @@
         <link href="<?php echo base_url('styles/form.css')?>" type="text/css" rel="stylesheet" />
     <?php endif;?>
     <link href="<?php echo base_url('styles/search.css')?>" type="text/css" rel="stylesheet"/>
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url('styles/jquery.lightbox-0.5.css')?>" media="screen" />
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('styles/jquery.lightbox-0.4.css')?>" media="screen" />
     <title><?php echo $title ?></title>
 </head>
 <body>
 
     <div id="header-holder">
         <div id="header">
-            <a href="<?=base_url()?>"><img src="<?php echo base_url('img/logo.jpg')?>" alt="餐谋网"/></a>
+        <img src="<?php echo base_url('img/logo.jpg')?>" alt="餐谋网"/>
 
         <div id="city"><b>武汉</b></div>
 
@@ -24,8 +24,8 @@
             <a href="#loginform" class="flatbtn" id="login"><b>登录</b></a>
             <a href="<?php echo base_url('user/register')?>" class="flatbtn" id="register"><b>注册</b></a>
         <?php else: ?>
-            <a href="#" class="flatbtn" id="login" style="left: 920px"><b><?=$this->session->userdata('nickname')?></b></a>
-            <a href="<?=base_url('user/logout')?>" class="flatbtn" id="register"><b>退出</b></a>
+            <<a href="#" class="flatbtn" id="login"><b><?=$this->session->userdata('nickname')?></b></a>
+            <a href="<?=base_url('user/logout')?>" class="flatbtn" id="login"><b>退出</b></a>
         <?php endif ?>
 
         <form action="">
@@ -40,10 +40,10 @@
             <img src="<?php echo base_url('img/next1.jpg')?>" class="block"/>
             <ul id="nav">
                 <li id="chosen"><strong>首页</strong></li>
-                <li><a href="<?=base_url()?>"><strong>吃点啥</strong></a></li>
-                <li><a href="<?=base_url()?>"><strong>尝尝鲜</strong></a></li>
+                <li><a href="#"><strong>吃点啥</strong></a></li>
+                <li><a href="#"><strong>尝尝鲜</strong></a></li>
                 <li><a href="#"><strong>最新优惠</strong></a></li>
-                <li<?php if (strpos(uri_string(), 'dhhotrate')) echo ' id="chosen"'?>><a href="<?=base_url('dininghall/dhhotrate')?>"><strong>餐谋热评榜</strong></a></li>
+                <li><a href="<?=base_url('dininghall/dhhotrate')?>"><strong>餐谋热评榜</strong></a></li>
                 <li><a href="#"><strong>参谋推荐</strong></a></li>
                 <li><a href="#"><strong>我的优惠</strong></a></li>
             </ul>
@@ -53,7 +53,7 @@
                 <li><a href="#"><strong>吃点啥</strong></a></li>
                 <li><a href="#"><strong>尝尝鲜</strong></a></li>
                 <li><a href="#"><strong>最新优惠</strong></a></li>
-                <li><a href="<?=base_url('dininghall/dhhotrate')?>"><strong>餐谋热评榜</strong></a></li>
+                <li><a href="#"><strong>餐谋热评榜</strong></a></li>
                 <li><a href="#"><strong>参谋推荐</strong></a></li>
                 <li><a href="#"><strong>我的优惠</strong></a></li>
             </ul>

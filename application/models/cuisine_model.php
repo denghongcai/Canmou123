@@ -23,4 +23,15 @@ Class Cuisine_model extends CI_Model{
         ));
         return $query->result_array();
     }
+
+    public function delCuisine($id)
+    {
+        $query = $this->db->delete('cuisine', array(
+            'id'=>$id
+        ));
+        if($this->db->affected_rows())
+            return TRUE;
+        else
+            return FALSE;
+    }
 }

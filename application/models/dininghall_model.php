@@ -81,7 +81,7 @@ class Dininghall_model extends CI_Model
                     $order = 'rate desc';
                     break;
                 case 4:
-                    $order = 'outdate desc';
+                    $order = 'dhid desc';
                     break;
                 default:
                     $order = 'rand()';
@@ -115,6 +115,14 @@ class Dininghall_model extends CI_Model
         return $query->row_array();
     }
 
+    public function get_dh_img($dhid)
+    {
+        $query = $this->db->get_where('dhimg', array(
+            'dhid'=>$dhid
+        ));
+        return $query->result_array();
+    }
+
     public function add_dininghall($data)
     {
         $query = $this->db->insert('dininghall', $data);
@@ -126,6 +134,17 @@ class Dininghall_model extends CI_Model
 
     public function del_dininghall($dhid){
         $query = $this->db->delete('dininghall', array('dhid' => $dhid));
+        if($this->db->affected_rows())
+            return TRUE;
+        else
+            return FALSE;
+    }
+
+    public function del_dh_img($imageid)
+    {
+        $query = $this->db->delete('dhimg', array(
+            'imgid'=>$imageid
+        ));
         if($this->db->affected_rows())
             return TRUE;
         else

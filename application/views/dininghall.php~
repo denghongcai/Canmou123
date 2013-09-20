@@ -39,7 +39,7 @@
         <h4 class="title">饭菜一览</h4>
         <?php foreach($cuisine as $item):?>
         <div class="food">
-            <a class="lightbox" href="<?=base_url($item['image'])?>"><img src="<?=base_url($item['image'])?>" /></a>
+            <a href="<?=base_url($item['image'])?>"><img src="<?=base_url($item['image'])?>" /></a>
             <p class="food-introduce"><?=$item['intro']?></p>
         </div>
         <?php endforeach ?>
